@@ -8,7 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'davidhalter/jedi-vim'
 " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/'
 " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
@@ -27,6 +27,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-vinegar'
+Plug 'posva/vim-vue'
 
 " let g:deoplete#enable_at_startup = 1
 
@@ -73,7 +74,11 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " Open vim-vinegar in current window
-nnoremap <Leader>n :e .
+nnoremap <Leader>n :e .<cr>
+
+" Quickswap buffers
+nmap <c-j> :bnext <cr>
+nmap <c-k> :bprev <cr>
 
 " Use hybridnumbers in active buffer but absolute in others
 augroup numbertoggle
@@ -90,6 +95,7 @@ let g:fzf_action = {
       \ }
 
 nnoremap <c-p> :GFiles<cr>
+nnoremap <Leader>p :Files<cr> 
 nnoremap ; :Buffers<cr>
 nmap <Leader>l :BLines<cr>
 nmap <Leader>L :Lines<cr>
