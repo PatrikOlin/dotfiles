@@ -1,18 +1,18 @@
 
 
-set number " Show line numbers
+set number relativenumber " Show line numbers
 set ruler " Show line and column numbers of the cursor.
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'neomake/neomake'
@@ -26,6 +26,7 @@ Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'wakatime/vim-wakatime'
+Plug 'tpope/vim-vinegar'
 
 " let g:deoplete#enable_at_startup = 1
 
@@ -71,8 +72,17 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
+" Open vim-vinegar in current window
+nnoremap <Leader>n :e .
 
-" === Fzf === "
+" Use hybridnumbers in active buffer but absolute in others
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained * set relativenumber
+	autocmd BufLeave,FocusLost * set norelativenumber
+augroup END
+
+"=== Fzf === "
 
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
@@ -120,7 +130,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " === NERDTree === "
 
-let g:NERDTreeWinSize=70
+" let g:NERDTreeWinSize=70
+" let NERDTreeHijackNetrw=1
 
 
 " ============================================================================ "
@@ -130,7 +141,7 @@ let g:NERDTreeWinSize=70
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
 "  <leader>f - Opens current file location in NERDTree
-nmap <leader>n :NERDTreeToggle<CR>
+" nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
 "   <Space> - PageDown
