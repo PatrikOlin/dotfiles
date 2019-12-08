@@ -1,17 +1,13 @@
 
-
-set number relativenumber " Show line numbers
-set ruler " Show line and column numbers of the cursor.
-
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Plug 'davidhalter/jedi-vim'
 " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/'
+Plug 'vim-airline/vim-airline'
 " Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 " Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
@@ -28,13 +24,30 @@ Plug 'tpope/vim-surround'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-vinegar'
 Plug 'posva/vim-vue'
-
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 " let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
 colorscheme gruvbox
+
+" Misc settings
+set number relativenumber " Show line numbers
+set ruler " Show line and column numbers of the cursor.
 set background=dark
+set termguicolors
+set tabstop=8
+set expandtab 
+set shiftwidth=4
+set autoindent 
+set smartindent
 
 " leader key
 let mapleader="\<space>"
@@ -87,6 +100,9 @@ augroup numbertoggle
 	autocmd BufLeave,FocusLost * set norelativenumber
 augroup END
 
+" Add space before nerdcommenter comments
+let g:NERDSpaceDelims=1
+
 "=== Fzf === "
 
 let g:fzf_action = {
@@ -99,7 +115,7 @@ nnoremap <Leader>p :Files<cr>
 nnoremap ; :Buffers<cr>
 nmap <Leader>l :BLines<cr>
 nmap <Leader>L :Lines<cr>
-nmap <Leader>M :Maps<cr>
+
 
 augroup fzf
   autocmd!
