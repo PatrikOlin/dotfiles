@@ -22,7 +22,7 @@ Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'wakatime/vim-wakatime'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'posva/vim-vue'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
@@ -31,9 +31,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'easymotion/vim-easymotion'
+" Plug 'iberianpig/ranger-explorer.vim'
+" Plug 'rbgrouleff/bclose.vim'
+Plug 'rafaqz/ranger.vim'
 " let g:deoplete#enable_at_startup = 1
 
 call plug#end()
@@ -50,6 +54,7 @@ set expandtab
 set shiftwidth=4
 set autoindent 
 set smartindent
+set syntax
 
 " leader key
 let mapleader="\<space>"
@@ -89,7 +94,7 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " Open vim-vinegar in current window
-nnoremap <Leader>n :e .<cr>
+" nnoremap <Leader>n :e .<cr>
 
 " Quickswap buffers
 nmap <c-j> :bnext <cr>
@@ -101,6 +106,9 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained * set relativenumber
 	autocmd BufLeave,FocusLost * set norelativenumber
 augroup END
+
+nnoremap <silent><Leader>n :RangerOpenCurrentDir<CR>
+nnoremap <silent><Leader>N :RangerOpenProjectRootDir<CR>
 
 " Add space before nerdcommenter comments
 let g:NERDSpaceDelims=1
