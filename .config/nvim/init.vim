@@ -33,11 +33,11 @@ Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
 " Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
 Plug 'easymotion/vim-easymotion'
 " Plug 'iberianpig/ranger-explorer.vim'
-" Plug 'rbgrouleff/bclose.vim'
-Plug 'rafaqz/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
 " let g:deoplete#enable_at_startup = 1
 
 call plug#end()
@@ -54,7 +54,7 @@ set expandtab
 set shiftwidth=4
 set autoindent 
 set smartindent
-set syntax
+syntax on
 
 " leader key
 let mapleader="\<space>"
@@ -104,11 +104,13 @@ nmap <c-k> :bprev <cr>
 augroup numbertoggle
 	autocmd!
 	autocmd BufEnter,FocusGained * set relativenumber
-	autocmd BufLeave,FocusLost * set norelativenumber
+	autocmd BufLeave,FocusLost * set number
 augroup END
 
-nnoremap <silent><Leader>n :RangerOpenCurrentDir<CR>
-nnoremap <silent><Leader>N :RangerOpenProjectRootDir<CR>
+let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+let g:ranger_map_keys = 0
+nnoremap <silent><Leader>n :RangerCurrentDirectory<CR>
+nnoremap <silent><Leader>N :RangerWorkingDirectory<CR>
 
 " Add space before nerdcommenter comments
 let g:NERDSpaceDelims=1
