@@ -1,14 +1,9 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'davidhalter/jedi-vim'
-" Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
-" Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'jiangmiao/auto-pairs'
-" Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 Plug 'neomake/neomake'
@@ -17,11 +12,11 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'wakatime/vim-wakatime'
-" Plug 'tpope/vim-vinegar'
 Plug 'posva/vim-vue'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
@@ -30,15 +25,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
-" Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
 Plug 'easymotion/vim-easymotion'
-" Plug 'iberianpig/ranger-explorer.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'andymass/vim-matchup'
-" let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
@@ -78,6 +70,13 @@ if has ('autocmd') " Remain compatible with earlier versions
   augroup END
 endif " has autocmd
 
+" Use rainbow_parentheses with typescript files
+augroup rainbow_typescript
+    autocmd!
+    autocmd FileType typescript, ts, scheme RainbowParentheses
+augroup END
+
+
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
@@ -92,9 +91,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
-
-" Open vim-vinegar in current window
-" nnoremap <Leader>n :e .<cr>
 
 " Quickswap buffers
 nmap <c-j> :bnext <cr>
@@ -161,27 +157,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-
-" === NERDTree === "
-
-" let g:NERDTreeWinSize=70
-" let NERDTreeHijackNetrw=1
-
-
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
-
-" === Nerdtree shorcuts === "
-"  <leader>n - Toggle NERDTree on/off
-"  <leader>f - Opens current file location in NERDTree
-" nmap <leader>n :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
-
-"   <Space> - PageDown
-"   -       - PageUp
-noremap <Space> <PageDown>
-noremap - <PageUp>
 
 " Quick window switching
 nmap <C-h> <C-w>h
