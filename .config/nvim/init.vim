@@ -31,6 +31,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'andymass/vim-matchup'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -98,9 +99,9 @@ nmap <c-k> :bprev <cr>
 
 " Use hybridnumbers in active buffer but absolute in others
 augroup numbertoggle
-	autocmd!
-	autocmd BufEnter,FocusGained * set relativenumber
-	autocmd BufLeave,FocusLost * set number
+  autocmd!
+  autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
 augroup END
 
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
@@ -110,6 +111,11 @@ nnoremap <silent><Leader>N :RangerWorkingDirectory<CR>
 
 " Add space before nerdcommenter comments
 let g:NERDSpaceDelims=1
+
+"=== indent guides === "
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
 
 "=== Fzf === "
 
@@ -148,6 +154,19 @@ inoremap <silent><expr> <TAB>
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Remap for rename current word
+nmap <leader>lr <Plug>(coc-rename)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " === Airline === "
 
@@ -169,6 +188,7 @@ nmap <C-l> <C-w>l
 
 " === coc.nvim === "
 nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dt <Plug>(coc-type-defintion)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
 
