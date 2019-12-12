@@ -12,7 +12,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
@@ -32,6 +31,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'andymass/vim-matchup'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'luochen1990/rainbow'
 
 call plug#end()
 
@@ -63,6 +63,12 @@ nnoremap <Leader>rv :so $MYVIMRC<CR>
 nnoremap H gT
 nnoremap L gt
 
+" Fix broken syntax highlight
+nnoremap <Leader>fh :syntax sync fromstart<CR>
+
+" autoload rainbow parentheses
+let g:rainbow_active = 1
+
 " Autoreload when saving init.vim/vimrc
 if has ('autocmd') " Remain compatible with earlier versions
  augroup vimrc     " Source vim configuration upon save
@@ -70,12 +76,6 @@ if has ('autocmd') " Remain compatible with earlier versions
     autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
   augroup END
 endif " has autocmd
-
-" Use rainbow_parentheses with typescript files
-augroup rainbow_typescript
-    autocmd!
-    autocmd FileType typescript, ts, scheme RainbowParentheses
-augroup END
 
 
 " This allows buffers to be hidden if you've modified a buffer.
