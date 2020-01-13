@@ -47,6 +47,7 @@ set expandtab
 set shiftwidth=4
 set autoindent 
 set smartindent
+set smartcase
 syntax on
 
 " leader key
@@ -77,6 +78,8 @@ if has ('autocmd') " Remain compatible with earlier versions
   augroup END
 endif " has autocmd
 
+" emmet-binding
+let g:user_emmet_leader_key=','
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
@@ -190,7 +193,7 @@ nmap <C-l> <C-w>l
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dt <Plug>(coc-type-defintion)
 nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>dj <Plug>(coc-implementation)
+nmap <silent> <leader>di <Plug>(coc-implementation)
 
 " === vim-better-whitespace === "
 "   <leader>y - Automatically remove trailing whitespace

@@ -3,11 +3,26 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; refresh' after modifying this file!
 
+;; Load personal modules
+
+(load! "+javascript")
 
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
 (setq user-full-name "Patrik Olin"
       user-mail-address "enmejl@gmail.com")
+
+;; Set indentation
+;; (setq-default tab-width 2
+;;               tab-width 2
+;;               javascript-2-level 1
+;;               web-mode-markup-2-offset 1
+;;               web-mode-css-2-offset 1
+;;               web-mode-code-2-offset 1
+;;               css-2-offset 1)
+
+(setq auth-source-debug t)
+(setq auth-sources '("~/.authinfo"))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -34,16 +49,51 @@
 ;; `nil' to disable it:
 (setq display-line-numbers-type 'relative)
 
+(def-package! org-super-agenda
+  :after org-agenda
+  :init
+  (setq org-super-agenda-groups '((:name "Today"
+                                         :time-grid t
+                                         :scheduled today)
+                                  (:name "Due today"
+                                         :deadline today)
+                                  (:name "Important"
+                                         :priority "A")
+                                  (:name "Overdue"
+                                         :deadline past)
+                                  (:name "Due soon"
+                                         :deadline future)
+                                  (:name "Big Outcomes"
+                                         :tag "bo")))
+  :config
+  (org-super-agenda-mode))
 
 ;; Mac-horeri
 (setq mac-option-modifier nil
       mac-command-modifier 'meta
       select-enable-clipboard t)
 
-(use-package! wakatime-mode)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+;; org-jirA
+  (setq jiralib-url "https://blinfo.atlassian.net")
+(setq request-log-level 'debug)
+(setq request-message-level 'debug)
 
 
+;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'tide-mode-hook 'prettier-js-mode)
 
+
+(use-package wakatime-mode
+  :init
+  (add-hook 'prog-mode-hook 'wakatime-mode)
+  :config (global-wakatime-mode))
+
+;; (use-package evil-commentary
+  ;; :init
+  ;; (evil-commentary-mode))
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one

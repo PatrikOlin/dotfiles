@@ -22,8 +22,14 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
+(package! tide)
+(package! treemacs-icons-dired)
 (package! wakatime-mode)
 (package! prettier-js)
+(package! exec-path-from-shell)
+(package! evil-commentary)
+(package! org-jira)
+(package! org-super-agenda)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
