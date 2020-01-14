@@ -81,6 +81,9 @@
 (setq request-log-level 'debug)
 (setq request-message-level 'debug)
 
+;; emmet bindings
+(map! :leader
+      "m e l" 'emmet-expand-line)
 
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'tide-mode-hook 'prettier-js-mode)
