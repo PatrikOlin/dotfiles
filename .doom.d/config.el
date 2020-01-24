@@ -81,9 +81,21 @@
 (setq request-log-level 'debug)
 (setq request-message-level 'debug)
 
-;; emmet bindings
+
+;; keybindings
 (map! :leader
-      "m e l" 'emmet-expand-line)
+      (:prefix "t"
+        :nv "f" #'tide-fix
+        :nv "r" #'tide-references
+        :nv "d" #'tide-jump-to-definition)
+      (:prefix "a"
+        :nv "m r" #'avy-move-region
+        :nv "c r" #'avy-copy-region
+        :nv "m l" #'avy-move-line
+        :nv "c l" #'avy-copy-line)
+      (:prefix "m"
+        :nv "e l" #'emmet-expand-line))
+
 
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'tide-mode-hook 'prettier-js-mode)
