@@ -87,7 +87,8 @@
       (:prefix "t"
         :nv "f" #'tide-fix
         :nv "r" #'tide-references
-        :nv "d" #'tide-jump-to-definition)
+        :nv "d" #'tide-jump-to-definition
+        :nv "e" #'tide-goto-error)
       (:prefix "a"
         :nv "m r" #'avy-move-region
         :nv "c r" #'avy-copy-region
