@@ -116,6 +116,7 @@
   (add-hook 'prog-mode-hook 'wakatime-mode)
   :config (global-wakatime-mode))
 
+(custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
 ;; (use-package evil-commentary
   ;; :init
   ;; (evil-commentary-mode))
