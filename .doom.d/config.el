@@ -89,6 +89,11 @@
         :nv "r" #'tide-references
         :nv "d" #'tide-jump-to-definition
         :nv "e" #'tide-goto-error)
+      (:prefix "ö"
+        :nv "f w" #'deadgrep
+        :nv "f f" #'counsel-fzf
+        :nv "t" #'projectile-run-vterm)
+
       (:prefix "a"
         :nv "m r" #'avy-move-region
         :nv "c r" #'avy-copy-region
@@ -99,8 +104,12 @@
 
 
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'tide-mode-hook 'prettier-js-mode)
+;; (add-hook 'tide-mode-hook 'prettier-js-mode)
+(add-hook 'before-save-hook 'prettier-js-mode)
 
+(eval-after-load
+  'typescript-mode
+  '(add-hook 'typescript-mode-hook #'add-node-modules-path))
 
 (use-package wakatime-mode
   :init
