@@ -16,7 +16,7 @@ export FZF_BASE=/path/to/fzf/install/dir
 
 # fzf settings
 # export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore-vcs --glob "!node_modules/*" --glob "!.git/*"'
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow'
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 {}"'
 
 # Uncomment the following line to disable fuzzy completion
@@ -133,3 +133,6 @@ prompt spaceship
 
 export ERL_AFLAGS=-"kernel shell_history enabled"
 
+fpath=($fpath "/home/patrik/.zfunctions")
+
+export PATH=$PATH:~/go/bin
