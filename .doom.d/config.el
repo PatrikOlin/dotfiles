@@ -40,7 +40,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/org/")
@@ -92,6 +92,8 @@
       (:prefix "ö"
         :nv "f w" #'deadgrep
         :nv "f f" #'counsel-fzf
+        :nv "r p" #'point-to-register
+        :nv "j p" #'jump-to-register
         :nv "t" #'projectile-run-vterm)
 
       (:prefix "a"
