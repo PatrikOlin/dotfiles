@@ -18,7 +18,7 @@ export FZF_BASE=/path/to/fzf/install/dir
 
 # fzf settings
 # export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore-vcs --glob "!node_modules/*" --glob "!.git/*"'
-export FZF_CTRL_T_COMMAND='rg --files --hidden --follow'
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow 2> /dev/null'
 export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 {}"'
 
 # Uncomment the following line to disable fuzzy completion
@@ -168,3 +168,7 @@ export PATH="/usr/local/opt/opencv@2/bin:$PATH"
   export PATH=$PATH:$GOROOT/bin
 export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+
+# fpath=($fpath "/home/patrik/.zfunctions")
+
+# export PATH=$PATH:~/go/bin
