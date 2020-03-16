@@ -43,7 +43,9 @@
 (setq doom-theme 'doom-gruvbox)
 
 ;; If you intend to use org, it is recommended you change this!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org")
+(require 'org)
+(setq org-log-done t)
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
@@ -93,14 +95,24 @@
         :nv "f w" #'deadgrep
         :nv "f f" #'counsel-fzf
         :nv "t" #'projectile-run-vterm)
-
       (:prefix "a"
         :nv "m r" #'avy-move-region
         :nv "c r" #'avy-copy-region
         :nv "m l" #'avy-move-line
         :nv "c l" #'avy-copy-line)
       (:prefix "m"
-        :nv "e l" #'emmet-expand-line))
+        :nv "e l" #'emmet-expand-line)
+      (:prefix "v"
+        :nv "f" #'vimish-fold-toggle
+        :nv "c f" #'vimish-fold-avy
+        :nv "n f" #'vimish-fold-next-fold
+        :nv "t a" #'vimish-fold-toggle-all
+        :nv "u a" #'vimish-fold-unfold-all
+        :nv "r a" #'vimish-fold-refold-all)
+      (:prefix "f"
+        :n "o o" #'nil
+        :n "o c" #'nil)
+      )
 
 
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)

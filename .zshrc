@@ -2,17 +2,19 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/patrik/.oh-my-zsh"
+export ZSH="/Users/patrikolin/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="spaceship"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 # Set fzf installation directory path
 export FZF_BASE=/path/to/fzf/install/dir
-
 
 # fzf settings
 # export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore-vcs --glob "!node_modules/*" --glob "!.git/*"'
@@ -41,14 +43,8 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -84,9 +80,11 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    z
-    fzf
+  git
+  zsh-autosuggestions
+  virtualenv
+  zsh-z
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,6 +106,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -116,20 +117,54 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# echo "alias ls='ls -G'" >> ~/.zshrc
+
+#prompt_context() {
+#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+#  fi
+#}
+
+#SPACESHIP:
+  # Set Spaceship ZSH as a prompt
+  # autoload -U promptinit; promptinit
+  # prompt spaceship
+
+# Set GOPATH
+export GOPATH=$HOME/dev/go
+
+#
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+alias ls="ls -G"
+
+# Set to show name of virtualenv when operating in virtualenv
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/patrikolin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# z installation
+. /Users/patrikolin/z
+
+eval $(thefuck --alias)
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+alias config='/usr/bin/git --git-dir=/Users/patrikolin/.cfg --work-tree=/Users/patrikolin'
 alias reload='source ~/.zshrc'
 
-source /usr/share/nvm/init-nvm.sh
-fpath=($fpath "/home/patrik/.zfunctions")
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
-# asdf
 . $HOME/.asdf/asdf.sh
 
 . $HOME/.asdf/completions/asdf.bash
-
-export ERL_AFLAGS=-"kernel shell_history enabled"
-
+export PATH="/usr/local/opt/opencv@2/bin:$PATH"
+  export GOPATH=$HOME/go
+  export GOROOT=/usr/local/go
+  export GOBIN=$GOPATH/bin
+  export PATH=$PATH:$GOPATH
+  export PATH=$PATH:$GOROOT/bin
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"

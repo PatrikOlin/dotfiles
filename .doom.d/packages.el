@@ -33,6 +33,7 @@
 (package! vmd-mode)
 (package! deadgrep)
 (package! add-node-modules-path)
+(package! dumb-diff)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
