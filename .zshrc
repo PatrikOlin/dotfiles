@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/patrikolin/.oh-my-zsh"
+export ZSH="/home/patrik/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
@@ -81,6 +81,7 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  asdf
   zsh-autosuggestions
   virtualenv
   zsh-z
@@ -134,32 +135,32 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH=$HOME/dev/go
 
 #
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias ls="ls -G"
+alias screen="xrandr --output DP-1.1 --mode 2560x1440 --pos 0x0 --rotate left --output HDMI-1-3 --off --output HDMI-1-2 --off --output HDMI-1-1 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 4000x1480 --rotate normal --output DP-1.2 --mode 2560x1440 --pos 1440x464 --rotate normal --output DP-1-1 --off --output HDMI-0 --off --output DP-1-2 --off --output DP-1 --off --output DP-0 --off"
+alias config='/usr/bin/git --git-dir=/home/patrik/.cfg --work-tree=/home/patrik'
+alias reload='source ~/.zshrc'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/patrikolin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/patrikolin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/completion.zsh.inc'; fi
 
 # z installation
-. /Users/patrikolin/z
+# . /Users/patrikolin/z
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-alias config='/usr/bin/git --git-dir=/Users/patrikolin/.cfg --work-tree=/Users/patrikolin'
-alias reload='source ~/.zshrc'
-
 . $HOME/.asdf/asdf.sh
 
-. $HOME/.asdf/completions/asdf.bash
+# . $HOME/.asdf/completions/asdf.bash
 export PATH="/usr/local/opt/opencv@2/bin:$PATH"
   export GOPATH=$HOME/go
   export GOROOT=/usr/local/go
@@ -172,3 +173,8 @@ export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 # fpath=($fpath "/home/patrik/.zfunctions")
 
 # export PATH=$PATH:~/go/bin
+fpath=($fpath "/home/patrik/.zfunctions")
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship

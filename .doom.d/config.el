@@ -51,7 +51,7 @@
 ;; `nil' to disable it:
 (setq display-line-numbers-type 'relative)
 
-(def-package! org-super-agenda
+(use-package! org-super-agenda
   :after org-agenda
   :init
   (setq org-super-agenda-groups '((:name "Today"
