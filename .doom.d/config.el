@@ -71,12 +71,12 @@
   (org-super-agenda-mode))
 
 ;; Mac-horeri
-(setq mac-option-modifier nil
-      mac-command-modifier 'meta
-      select-enable-clipboard t)
+;; (setq mac-option-modifier nil
+;;       mac-command-modifier 'meta
+;;       select-enable-clipboard t)
 
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+;; (when (memq window-system '(mac ns x))
+;;   (exec-path-from-shell-initialize))
 
 ;; org-jirA
   (setq jiralib-url "https://blinfo.atlassian.net")
@@ -98,6 +98,7 @@
         :nv "j p" #'jump-to-register
         :nv "t" #'projectile-run-vterm)
       (:prefix "a"
+        :nv "f" #'avy-goto-char-2
         :nv "m r" #'avy-move-region
         :nv "c r" #'avy-copy-region
         :nv "m l" #'avy-move-line

@@ -137,7 +137,7 @@ export GOPATH=$HOME/dev/go
 #
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias ls="ls -G"
-alias screen="xrandr --output DP-1.1 --mode 2560x1440 --pos 0x0 --rotate left --output HDMI-1-3 --off --output HDMI-1-2 --off --output HDMI-1-1 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 4000x1480 --rotate normal --output DP-1.2 --mode 2560x1440 --pos 1440x464 --rotate normal --output DP-1-1 --off --output HDMI-0 --off --output DP-1-2 --off --output DP-1 --off --output DP-0 --off"
+alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2.2 --primary --mode 2560x1440 --pos 1440x592 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --pos 4000x840 --rotate normal --output DP-0 --off"
 alias config='/usr/bin/git --git-dir=/home/patrik/.cfg --work-tree=/home/patrik'
 alias reload='source ~/.zshrc'
 
