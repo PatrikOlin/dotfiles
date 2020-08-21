@@ -6,6 +6,7 @@
 ;; Load personal modules
 
 (load! "+javascript")
+(load! "+zetteldeft")
 
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
@@ -70,6 +71,13 @@
   :config
   (org-super-agenda-mode))
 
+
+;; Company autocomlpete
+(setq company-idle-delay 0.2
+      company-minimum-prefix-length 3)
+
+;;Go-lsp-fix
+(setq lsp-gopls-codelens nil)
 ;; Mac-horeri
 ;; (setq mac-option-modifier nil
 ;;       mac-command-modifier 'meta
@@ -83,12 +91,47 @@
 (setq request-log-level 'debug)
 (setq request-message-level 'debug)
 
+;; zetteldeft & deft
+
+;; (use-package! deft
+;;   :ensure t
+;;   :custom
+;;     (deft-extensions '("org" "md" "txt"))
+;;     (deft-directory "~/notes")
+;;     (deft-use-filename-as-title t)
+;; )
+
+;; (use-package! deft
+;;   :ensure t
+;;   :after deft
+;;   :config (zetteldeft-set-classic-keybindings)
+
+;; (defcustom zetteldeft-link-indicator "$"
+;;   "String to indicate zetteldeft links.
+;; String prepended to IDs to easily identify them as links to zetteldeft notes.
+;; This variable should be a string containing only one character."
+;;   :type 'string
+;;   :group 'zetteldeft
+;;   :set 'zetteldeft--id-font-lock-setup)
+;; )
+
+;; Add both changes in ediff
+(defun ediff-copy-both-to-C ()
+  (interactive)
+  (ediff-copy-diff ediff-current-difference nil 'C nil
+                   (concat
+                    (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+                    (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+(defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "c" 'ediff-copy-both-to-C))
+(add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
+
 
 ;; keybindings
 (map! :leader
       (:prefix "t"
         :nv "f" #'tide-fix
         :nv "r" #'tide-references
+        :nv "R" #'tide-refactor
         :nv "d" #'tide-jump-to-definition
         :nv "e" #'tide-goto-error)
       (:prefix "ö"
@@ -101,10 +144,13 @@
         :nv "f" #'avy-goto-char-2
         :nv "m r" #'avy-move-region
         :nv "c r" #'avy-copy-region
+        :nv "k r" #'avy-kill-region
         :nv "m l" #'avy-move-line
-        :nv "c l" #'avy-copy-line)
+        :nv "c l" #'avy-copy-line
+        :nv "k l" #'avy-kill-whole-line)
       (:prefix "m"
-        :nv "e l" #'emmet-expand-line)
+        :nv "a" #'evil-multiedit-match-all
+        :nv "i" #'evil-multiedit-insert-state)
       (:prefix "v"
         :nv "f" #'vimish-fold-toggle
         :nv "c f" #'vimish-fold-avy
@@ -132,6 +178,7 @@
   :config (global-wakatime-mode))
 
 (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
+
 ;; (use-package evil-commentary
   ;; :init
   ;; (evil-commentary-mode))

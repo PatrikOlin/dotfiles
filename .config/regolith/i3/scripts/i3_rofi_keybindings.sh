@@ -1,0 +1,1 @@
+ cat ~/.config/regolith/i3/config | grep 'bindsym' | grep -v '^\s*#' | sed 's/bindsym / /' | rofi -dmenu 

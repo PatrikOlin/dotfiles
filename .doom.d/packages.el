@@ -34,6 +34,9 @@
 (package! add-node-modules-path)
 (package! dumb-diff)
 (package! indium)
+(package! zetteldeft)
+(package! scad-mode)
+(package! restclient)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:

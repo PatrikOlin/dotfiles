@@ -14,7 +14,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 # Set fzf installation directory path
-export FZF_BASE=/path/to/fzf/install/dir
+# export FZF_BASE=/path/to/fzf/install/dir
 
 # fzf settings
 # export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore-vcs --glob "!node_modules/*" --glob "!.git/*"'
@@ -132,7 +132,7 @@ source $ZSH/oh-my-zsh.sh
   # prompt spaceship
 
 # Set GOPATH
-export GOPATH=$HOME/dev/go
+# export GOPATH=$HOME/dev/go
 
 #
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -140,6 +140,7 @@ alias ls="ls -G"
 alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2.2 --primary --mode 2560x1440 --pos 1440x592 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --pos 4000x840 --rotate normal --output DP-0 --off"
 alias config='/usr/bin/git --git-dir=/home/patrik/.cfg --work-tree=/home/patrik'
 alias reload='source ~/.zshrc'
+alias zshrc='nvim ~/.zshrc'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -162,13 +163,12 @@ export LANG=en_US.UTF-8
 
 # . $HOME/.asdf/completions/asdf.bash
 export PATH="/usr/local/opt/opencv@2/bin:$PATH"
-  export GOPATH=$HOME/go
-  export GOROOT=/usr/local/go
-  export GOBIN=$GOPATH/bin
-  export PATH=$PATH:$GOPATH
-  export PATH=$PATH:$GOROOT/bin
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+export PATH="$PATH:$HOME/.config/regolith/i3/scripts"
 
 # fpath=($fpath "/home/patrik/.zfunctions")
 
@@ -178,3 +178,4 @@ fpath=($fpath "/home/patrik/.zfunctions")
   # Set Spaceship ZSH as a prompt
   autoload -U promptinit; promptinit
   prompt spaceship
+PATH="$HOME/.local/bin:$PATH"
