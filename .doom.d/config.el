@@ -133,6 +133,7 @@
         :nv "r" #'tide-references
         :nv "R" #'tide-refactor
         :nv "d" #'tide-jump-to-definition
+        :nv "b" #'tide-jump-back
         :nv "e" #'tide-goto-error)
       (:prefix "ö"
         :nv "f w" #'deadgrep
