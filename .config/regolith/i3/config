@@ -113,7 +113,7 @@ set_from_resource $i3-wm.program.help i3-wm.program.help /usr/bin/remontoire-tog
 bindsym $mod+Shift+question exec --no-startup-id $i3-wm.program.help
 
 ## Launch // i3-instant-layout // <> Tab
-bindsym $mod+Ctrl+Return exec "i3-instant-layout --list | rofi -dmenu -i | i3-instant-layout -"
+bindsym $mod+Ctrl+Return exec ~/.config/regolith/i3/scripts/i3_instant_layout.sh
 ## Launch // File Search // <><Alt> Space ##
 set_from_resource $i3-wm.program.file_search i3-wm.program.file_search rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
 bindsym $mod+$alt+space exec $i3-wm.program.file_search
@@ -521,3 +521,5 @@ bar {
       urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
   }
 }
+
+for_window [class="^.*"] border pixel 1

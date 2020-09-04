@@ -141,9 +141,11 @@ alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --po
 alias config='/usr/bin/git --git-dir=/home/patrik/.cfg --work-tree=/home/patrik'
 alias reload='source ~/.zshrc'
 alias zshrc='nvim ~/.zshrc'
+alias fejk=$HOME/scripts/fejk.sh
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
+
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/patrikolin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/patrikolin/google-cloud-sdk/path.zsh.inc'; fi
@@ -162,13 +164,14 @@ export LANG=en_US.UTF-8
 . $HOME/.asdf/asdf.sh
 
 # . $HOME/.asdf/completions/asdf.bash
-export PATH="/usr/local/opt/opencv@2/bin:$PATH"
+#export PATH="/usr/local/opt/opencv@2/bin:$PATH"
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
-export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+#export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+#export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 export PATH="$PATH:$HOME/.config/regolith/i3/scripts"
+export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # fpath=($fpath "/home/patrik/.zfunctions")
 
