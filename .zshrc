@@ -142,6 +142,7 @@ alias config='/usr/bin/git --git-dir=/home/patrik/.cfg --work-tree=/home/patrik'
 alias reload='source ~/.zshrc'
 alias zshrc='nvim ~/.zshrc'
 alias fejk=$HOME/scripts/fejk.sh
+alias jp=$HOME/scripts/json-prettify.sh
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)

@@ -128,6 +128,12 @@
 
 ;; keybindings
 (map! :leader
+      (:prefix "j"
+        :nv "j" #'evil-jump-backward
+        :nv "b" #'evil-jump-backward
+        :nv "f" #'evil-jump-forward
+        :nv "l" #'+ivy/jump-list
+       )
       (:prefix "t"
         :nv "f" #'tide-fix
         :nv "r" #'tide-references

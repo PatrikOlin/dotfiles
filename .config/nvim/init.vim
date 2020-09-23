@@ -1,8 +1,12 @@
-"=== call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'wakatime/vim-wakatime'
+Plug 'vimwiki/vimwiki'
+Plug 'rakr/vim-one'
 "=== Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"=== Plug 'vim-airline/vim-airline'
-"=== Plug 'vim-airline/vim-airline-themes'
 "=== Plug 'scrooloose/nerdcommenter'
 "=== Plug 'sbdchd/neoformat'
 "=== Plug 'neomake/neomake'
@@ -14,7 +18,6 @@
 "=== Plug 'elixir-editors/vim-elixir'
 "=== Plug 'mattn/emmet-vim'
 "=== Plug 'terryma/vim-multiple-cursors'
-"=== Plug 'wakatime/vim-wakatime'
 "=== Plug 'posva/vim-vue'
 "=== Plug 'prettier/vim-prettier', {
 "===   \ 'do': 'npm install',
@@ -32,28 +35,33 @@
 "=== Plug 'nathanaelkane/vim-indent-guides'
 "=== Plug 'luochen1990/rainbow'
 
-"=== call plug#end()
+call plug#end()
+let g:airline_theme='one'
 
-"=== colorscheme gruvbox
+colorscheme one
+set background=dark " for the dark version
+" set background=light " for the light version
 
-"=== " Misc settings
-"=== set number relativenumber " Show line numbers
-"=== set ruler " Show line and column numbers of the cursor.
-"=== set background=dark
-"=== set termguicolors
-"=== set tabstop=8
-"=== set expandtab
-"=== set shiftwidth=4
-"=== set autoindent
-"=== set smartindent
-"=== set smartcase
-"=== syntax on
+" Misc settings
+set number relativenumber " Show line numbers
+set ruler " Show line and column numbers of the cursor.
+set background=dark
+set termguicolors
+set tabstop=8
+set expandtab
+set shiftwidth=4
+set autoindent
+set smartindent
+set smartcase
+syntax on
 
-"=== " leader key
-"=== let mapleader="\<space>"
+" leader key
+let mapleader="\<space>"
 
 
-"=== " === Misc === "
+" === Misc === "
+
+nnoremap <Leader>, :BufExplorer<CR>
 
 "=== " Quickly edit/reload this configuration file
 "=== nnoremap <Leader>ev :e $MYVIMRC<CR>
@@ -219,3 +227,28 @@
 "=== " Used when you want to paste over something without it getting copied to
 "=== " Vim's default buffer
 "=== vnoremap <leader>p "_dP
+
+"=== " ============================================================================ "
+"=== " ===                                VIMWIKI                               === "
+"=== " ============================================================================ "
+
+let wiki = {}
+let wiki.path = '~/vimwiki/'
+let wiki.path_html = '~/vimwiki/docs'
+let wiki.template_path = '~/vimwiki/templates'
+let wiki.template_default = 'default'
+let wiki.template_ext = '.html'
+let wiki.index = 'index'
+let wiki.ext = '.wiki'
+let wiki.nested_syntaxes = {'python': 'python', 'json': 'json', 'golang': 'go', 'js': 'js', 'sh': 'sh'}
+let g:vimwiki_list = [wiki]
+
+"let wiki_1 = {}
+"let wiki_1.path = '~/vimwiki'
+"let wiki_1.ext = '.wiki'
+"let wiki_1.auto_toc = 1
+" Create posts automatically
+"let wiki_1.diary_rel_path = '_posts'
+"let g:vimwiki_list = [wiki_1]
+"let g:vimwiki_dir_link = 'index'
+"let g:vimwiki_use_calendar = 1
