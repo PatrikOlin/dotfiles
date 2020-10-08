@@ -179,7 +179,6 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 # export PATH=$PATH:~/go/bin
 fpath=($fpath "/home/patrik/.zfunctions")
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
 PATH="$HOME/.local/bin:$PATH"
+
+eval "$(starship init zsh)"
