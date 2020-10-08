@@ -6,7 +6,7 @@
 ;; Load personal modules
 
 (load! "+javascript")
-(load! "+zetteldeft")
+;; (load! "+zetteldeft")
 
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
@@ -43,6 +43,9 @@
 ;; `load-theme' function. These are the defaults.
 (setq doom-theme 'doom-one)
 
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/Documents/org")
 (require 'org)
@@ -170,6 +173,9 @@
         :n "o c" #'nil)
       )
 
+;; remap whatever f was to avy
+(map! :nv "f" #'nil)
+(map! :nv "f" #'avy-goto-char-2)
 
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 ;; (add-hook 'tide-mode-hook 'prettier-js-mode)
