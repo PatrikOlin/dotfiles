@@ -21,10 +21,18 @@
 ;;               web-mode-css-2-offset 1
 ;;               web-mode-code-2-offset 1
 ;;               css-2-offset 1)
+;;
+;; Make sure to use exec-path-from-shell when run as daemon
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 (setq auth-source-debug t)
 (setq auth-sources '("~/.authinfo"))
 
+;; word-wrap in all text modes
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
+(global-set-key [S-dead-grave] "`")
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -40,16 +48,15 @@
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. These are the defaults.
+;; `load-theme' function. These are the defaults.:w
 (setq doom-theme 'doom-one)
 
-
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
 ;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/Documents/org")
 (require 'org)
 (setq org-log-done t)
+
+(setq org-roam-directory "~/roam")
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
@@ -191,6 +198,11 @@
   :config (global-wakatime-mode))
 
 (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
+
+;;projectile
+;; (use-package projectile
+;;   (projectile-indexing-method 'alien)
+;; )
 
 ;; (use-package evil-commentary
   ;; :init

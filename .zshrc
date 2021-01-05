@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/patrik/.oh-my-zsh"
+export ZSH="/home/olin/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -14,7 +14,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 # Set fzf installation directory path
-# export FZF_BASE=/path/to/fzf/install/dir
+export FZF_BASE=/path/to/fzf/install/dir
 
 # fzf settings
 # export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --no-ignore-vcs --glob "!node_modules/*" --glob "!.git/*"'
@@ -81,10 +81,10 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  asdf
+  nvm
   zsh-autosuggestions
-  virtualenv
-  zsh-z
+  zsh-syntax-highlighting
+  z
   fzf
 )
 
@@ -136,7 +136,7 @@ source $ZSH/oh-my-zsh.sh
 
 #
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias ls="ls -G"
+alias ls="exa"
 alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2.2 --primary --mode 2560x1440 --pos 1440x592 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --pos 4000x840 --rotate normal --output DP-0 --off"
 alias config='/usr/bin/git --git-dir=/home/olin/.cfg --work-tree=/home/olin'
 alias reload='source ~/.zshrc'
@@ -162,23 +162,23 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 
 # . $HOME/.asdf/completions/asdf.bash
 #export PATH="/usr/local/opt/opencv@2/bin:$PATH"
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+# export GOROOT=/usr/local/go
+# export GOPATH=$HOME/go
+# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 #export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 #export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
-export PATH="$PATH:$HOME/.config/regolith/i3/scripts"
+# export PATH="$PATH:$HOME/.config/regolith/i3/scripts"
 export PATH="$PATH:$HOME/.emacs.d/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # fpath=($fpath "/home/patrik/.zfunctions")
 
 # export PATH=$PATH:~/go/bin
 fpath=($fpath "/home/patrik/.zfunctions")
 
-PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"

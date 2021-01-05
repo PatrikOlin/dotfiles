@@ -65,7 +65,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
-       ;;word-wrap         ; soft wrapping with language-aware indent
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -93,7 +93,7 @@
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        lsp
-       macos             ; MacOS-specific commands
+       ;; macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -109,7 +109,7 @@
        ;;assembly          ; assembly for fun or debugging
        ;;cc                ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
-       ;;common-lisp       ; if you've seen one lisp, you've seen them all
+       common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
@@ -145,6 +145,7 @@
         ;;+jupyter        ; ipython/jupyter support for babel
         ;;+pandoc          ; export-with-pandoc support
         ;;+pomodoro        ; be fruitful with the tomato technique
+        +roam
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
