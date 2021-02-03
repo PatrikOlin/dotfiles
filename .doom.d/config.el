@@ -144,13 +144,13 @@
         :nv "f" #'evil-jump-forward
         :nv "l" #'+ivy/jump-list
        )
-      (:prefix "t"
-        :nv "f" #'tide-fix
-        :nv "r" #'tide-references
-        :nv "R" #'tide-refactor
-        :nv "d" #'tide-jump-to-definition
-        :nv "b" #'tide-jump-back
-        :nv "e" #'tide-goto-error)
+      ;; (:prefix "t"
+      ;;   :nv "f" #'tide-fix
+      ;;   :nv "r" #'tide-references
+      ;;   :nv "R" #'tide-refactor
+      ;;   :nv "d" #'tide-jump-to-definition
+      ;;   :nv "b" #'tide-jump-back
+      ;;   :nv "e" #'tide-goto-error)
       (:prefix "ö"
         :nv "f w" #'deadgrep
         :nv "f f" #'counsel-fzf
@@ -178,15 +178,26 @@
       (:prefix "f"
         :n "o o" #'nil
         :n "o c" #'nil)
+      (:prefix "l"
+       :n "p b" #'lsp-ui-peek-jump-backward
+       :n "p f" #'lsp-ui-peek-jump-forward
+       :n "d" #'lsp-ui-doc-show
+       :n "p i" #'lsp-ui-peek-find-implementation
+       :n "p r" #'lsp-ui-peek-find-references
+       )
       )
+
 
 ;; remap whatever f was to avy
 (map! :nv "f" #'nil)
 (map! :nv "f" #'avy-goto-char-2)
 
+;; Run prettier in webdev modes
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
 ;; (add-hook 'tide-mode-hook 'prettier-js-mode)
-(add-hook 'before-save-hook 'prettier-js-mode)
+;; (add-hook 'web-mode-hook 'prettier-js-mode)
+;; (add-hook 'before-save-hook 'prettier-js-mode)
+
 
 (eval-after-load
   'typescript-mode
@@ -199,8 +210,28 @@
 
 (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
 
+
+;; LSP configuration
+
+;; (mapc (lambda (f) (set-face-foreground f "dim gray"))
+;;    '(lsp-ui-sideline-current-symbol lsp-ui-sideline-symbol lsp-ui-sideline-symbol-info))
+(setq lsp-ui-doc nil)
+(setq lsp-ui-doc-position 'at-point
+      lsp-ui-doc-max-height 150
+      lsp-ui-doc-max-width 100)
+
+;;; Angular
+
+(add-to-list 'lsp-disabled-clients '(web-mode . angular-ls))
+
+
+;; DAP configuration
+
+
+
 ;;projectile
 ;; (use-package projectile
+;;
 ;;   (projectile-indexing-method 'alien)
 ;; )
 
