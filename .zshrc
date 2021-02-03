@@ -143,6 +143,7 @@ alias reload='source ~/.zshrc'
 alias zshrc='nvim ~/.zshrc'
 alias fejk=$HOME/scripts/fejk.sh
 alias jp=$HOME/scripts/json-prettify.sh
+alias cheat="cht.sh"
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -182,3 +183,4 @@ fpath=($fpath "/home/patrik/.zfunctions")
 
 
 eval "$(starship init zsh)"
+fpath=(~/.zsh.d/ $fpath)
