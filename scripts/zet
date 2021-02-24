@@ -1,0 +1,17 @@
+set -e
+
+ZROOT=${ZET_ROOT:=~/roam}
+
+name="$ZROOT/$(date +"%Y-%m-%d-%H%M")"
+content="#+title:"
+
+for word in $@; do
+	  name+="-$word"
+	    content+=" ${word^}"
+    done
+
+    if [ ! -e "$name.org" ]; then
+	      echo -e "$content\n\n#+ROAM_TAGS:" > $name.org
+    fi
+
+    emacsclient -c $name.org
