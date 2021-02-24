@@ -6,9 +6,13 @@
 super + Return
         kitty
 
-# program launcher
+# rofi program launcher
 super + @space
 	rofi -show drun
+
+# rofi script launcher
+super + shift + @space
+        ~/.config/rofi/rofi_cmd
 
 # rofi window switcher
 alt + Tab

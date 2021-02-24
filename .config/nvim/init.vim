@@ -5,7 +5,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'wakatime/vim-wakatime'
 Plug 'vimwiki/vimwiki'
-Plug 'rakr/vim-one'
+Plug 'romgrk/doom-one.vim'
+"=== Plug 'rakr/vim-one'
 "=== Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "=== Plug 'scrooloose/nerdcommenter'
 "=== Plug 'sbdchd/neoformat'
@@ -38,14 +39,13 @@ Plug 'rakr/vim-one'
 call plug#end()
 let g:airline_theme='one'
 
-colorscheme one
+colorscheme doom-one
 set background=dark " for the dark version
 " set background=light " for the light version
 
 " Misc settings
 set number relativenumber " Show line numbers
 set ruler " Show line and column numbers of the cursor.
-set background=dark
 set termguicolors
 set tabstop=8
 set expandtab

@@ -1,0 +1,24 @@
+! Colors
+#include </home/olin/.termcolors/doom-one>
+
+*color17: #000F1F
+*color18: #210000
+*color19: #171600
+
+*colour17: #000F1F
+*colour18: #210000
+*colour19: #171600
+
+! urxvt
+URxvt*font: xft:Hack:size=6
+URxvt*borderless: false
+URxvt*externalBorder: 0
+URxvt*internalBorder: 4
+
+URxvt*scrollBar: false
+URxvt*saveLines: 5000
+
+URxvt*cursorColor:                    #d1d4e0
+URxvt*scrollColor:                    #d1d4e0
+URxvt*highlightColor:                 #252936
+URxvt*highlightTextColor:             #C0C5CE

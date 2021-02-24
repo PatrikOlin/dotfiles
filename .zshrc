@@ -82,6 +82,7 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --extended --preview "head -100 
 plugins=(
   git
   nvm
+  sudo
   zsh-autosuggestions
   zsh-syntax-highlighting
   z
@@ -139,11 +140,12 @@ source $ZSH/oh-my-zsh.sh
 alias ls="exa"
 alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2.2 --primary --mode 2560x1440 --pos 1440x592 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --pos 4000x840 --rotate normal --output DP-0 --off"
 alias config='/usr/bin/git --git-dir=/home/olin/.cfg --work-tree=/home/olin'
-alias reload='source ~/.zshrc'
+alias reload='exec zsh'
 alias zshrc='nvim ~/.zshrc'
 alias fejk=$HOME/scripts/fejk.sh
 alias jp=$HOME/scripts/json-prettify.sh
 alias cheat="cht.sh"
+alias vim="nvim"
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -167,20 +169,33 @@ export LANG=en_US.UTF-8
 
 # . $HOME/.asdf/completions/asdf.bash
 #export PATH="/usr/local/opt/opencv@2/bin:$PATH"
-# export GOROOT=/usr/local/go
-# export GOPATH=$HOME/go
-# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 #export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 #export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 # export PATH="$PATH:$HOME/.config/regolith/i3/scripts"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/scripts:$PATH"
+typeset -U PATH
+
 
 # fpath=($fpath "/home/patrik/.zfunctions")
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 # export PATH=$PATH:~/go/bin
 fpath=($fpath "/home/patrik/.zfunctions")
 
-
 eval "$(starship init zsh)"
 fpath=(~/.zsh.d/ $fpath)
+
+source /home/olin/.config/broot/launcher/bash/br
+
+export EDITOR="nvim"
+export TERM="xterm-256color"
+
+function zshaddhistory() {
+	echo "${1%%$'\n'}|${PWD}   " >> ~/.zsh_history_ext
+}

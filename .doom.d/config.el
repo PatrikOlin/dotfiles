@@ -222,12 +222,16 @@
 
 ;;; Angular
 
-(add-to-list 'lsp-disabled-clients '(web-mode . angular-ls))
+;;(add-to-list 'lsp-disabled-clients '(web-mode . angular-ls))
 
 
 ;; DAP configuration
 
 
+;; undo-fu
+(use-package evil
+  :init
+  (setq evil-undo-system 'undo-fu))
 
 ;;projectile
 ;; (use-package projectile
