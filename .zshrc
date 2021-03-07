@@ -146,6 +146,7 @@ alias fejk=$HOME/scripts/fejk.sh
 alias jp=$HOME/scripts/json-prettify.sh
 alias cheat="cht.sh"
 alias vim="nvim"
+alias "?"="ddgr"
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -178,6 +179,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export PATH="$PATH:$HOME/.emacs.d/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/.m2:$PATH"
 typeset -U PATH
 
 
@@ -199,3 +201,4 @@ export TERM="xterm-256color"
 function zshaddhistory() {
 	echo "${1%%$'\n'}|${PWD}   " >> ~/.zsh_history_ext
 }
+if [ -e /home/olin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/olin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

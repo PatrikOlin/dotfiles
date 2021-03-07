@@ -4,14 +4,14 @@
 
 # terminal emulator
 super + Return
-        kitty
+        urxvtc
 
 # rofi program launcher
 super + @space
 	rofi -show drun
 
 # rofi script launcher
-super + shift + @space
+super + ctrl + Return
         ~/.config/rofi/rofi_cmd
 
 # rofi window switcher

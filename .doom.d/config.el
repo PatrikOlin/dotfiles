@@ -257,3 +257,26 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+;; mu4e
+(require 'mu4e)
+
+(setq mu4e-maildir "~/.mail"
+mu4e-attachment-dir "~/Downloads")
+
+(setq user-mail-address "patrik@olin.work"
+user-full-name  "Patrik Olin")
+
+;; Get mail
+(setq mu4e-get-mail-command "mbsync protonmail"
+mu4e-change-filenames-when-moving t   ; needed for mbsync
+mu4e-update-interval 120)             ; update every 2 minutes
+
+;; Send mail
+(setq message-send-mail-function 'smtpmail-send-it
+smtpmail-auth-credentials "~/.authinfo.gpg"
+smtpmail-smtp-server "127.0.0.1"
+smtpmail-stream-type 'starttls
+smtpmail-smtp-service 1025)
+
+(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
