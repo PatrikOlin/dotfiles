@@ -26,8 +26,8 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-(setq auth-source-debug t)
-(setq auth-sources '("~/.authinfo"))
+;; (setq auth-source-debug t)
+(setq auth-sources '("~/.authinfo.gpg"))
 
 ;; word-wrap in all text modes
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
@@ -224,6 +224,7 @@
 
 ;;(add-to-list 'lsp-disabled-clients '(web-mode . angular-ls))
 
+(add-hook 'neuron-mode-hook 'turn-on-auto-fill)
 
 ;; DAP configuration
 

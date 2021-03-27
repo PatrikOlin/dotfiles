@@ -144,9 +144,10 @@ alias reload='exec zsh'
 alias zshrc='nvim ~/.zshrc'
 alias fejk=$HOME/scripts/fejk.sh
 alias jp=$HOME/scripts/json-prettify.sh
-alias cheat="cht.sh"
-alias vim="nvim"
-alias "?"="ddgr"
+alias cheat='cht.sh'
+alias vim='nvim'
+alias '?'='ddgr'
+alias bb='butler-burton'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)

@@ -4,12 +4,12 @@ Plug 'wakatime/vim-wakatime'
 Plug 'junegunn/fzf.vim'
 "=== Plug 'romgrk/doom-one.vim'
 Plug 'chiefnoah/neuron-v2.vim'
-Plug 'rakr/vim-one'
+"=== Plug 'rakr/vim-one'
 
 call plug#end()
 
-colorscheme one
-set background=dark " for the dark version
+"=== colorscheme one
+"=== set background=dark " for the dark version
 " set background=light " for the light version
 
 " Misc settings

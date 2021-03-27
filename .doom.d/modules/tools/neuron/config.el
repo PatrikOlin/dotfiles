@@ -73,6 +73,7 @@
           :v  "L" #'neuron-create-zettel-from-selection
           :ni "s" #'neuron-insert-static-link
           :ni "c" #'neuron-toggle-connection-type
+          :ni "i" #'neuron-insert-zettel-link
           )
         )
 
