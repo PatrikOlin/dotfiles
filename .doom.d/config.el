@@ -6,6 +6,7 @@
 ;; Load personal modules
 
 (load! "+javascript")
+;;(load! "+go")
 ;; (load! "+zetteldeft")
 
 ;; These are used for a number of things, particularly for GPG configuration,
@@ -55,8 +56,6 @@
 (setq org-directory "~/Documents/org")
 (require 'org)
 (setq org-log-done t)
-
-(setq org-roam-directory "~/roam")
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
@@ -260,24 +259,24 @@
 ;; they are implemented.
 
 ;; mu4e
-(require 'mu4e)
+;; (require 'mu4e)
 
-(setq mu4e-maildir "~/.mail"
-mu4e-attachment-dir "~/Downloads")
+;; (setq mu4e-maildir "~/.mail"
+;; mu4e-attachment-dir "~/Downloads")
 
-(setq user-mail-address "patrik@olin.work"
-user-full-name  "Patrik Olin")
+;; (setq user-mail-address "patrik@olin.work"
+;; user-full-name  "Patrik Olin")
 
-;; Get mail
-(setq mu4e-get-mail-command "mbsync protonmail"
-mu4e-change-filenames-when-moving t   ; needed for mbsync
-mu4e-update-interval 120)             ; update every 2 minutes
+;; ;; Get mail
+;; (setq mu4e-get-mail-command "mbsync protonmail"
+;; mu4e-change-filenames-when-moving t   ; needed for mbsync
+;; mu4e-update-interval 120)             ; update every 2 minutes
 
-;; Send mail
-(setq message-send-mail-function 'smtpmail-send-it
-smtpmail-auth-credentials "~/.authinfo.gpg"
-smtpmail-smtp-server "127.0.0.1"
-smtpmail-stream-type 'starttls
-smtpmail-smtp-service 1025)
+;; ;; Send mail
+;; (setq message-send-mail-function 'smtpmail-send-it
+;; smtpmail-auth-credentials "~/.authinfo.gpg"
+;; smtpmail-smtp-server "127.0.0.1"
+;; smtpmail-stream-type 'starttls
+;; smtpmail-smtp-service 1025)
 
-(add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
+;; (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
