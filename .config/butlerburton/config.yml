@@ -1,0 +1,15 @@
+name: "Patrik Olin"
+color: "#c678dd" 
+webhook_url: "https://bjornlunden.webhook.office.com/webhookb2/7886760a-086c-46dd-94a8-2b9f7c06a323@37a49a16-b27c-4909-9891-338b46379b9d/IncomingWebhook/48fab2763bc246ccae5cf525f1389aa6/0834ca80-a1c0-4369-a957-d044ff97d892"
+notifications: true
+vab_msg: "Jag vabbar idag, försök hålla skutan flytande så är jag tillbaks imorgon"
+report:
+    path: "/home/olin/.butlerburton/"
+    update: true
+    checkin_col: "C"
+    checkout_col: "D"
+    lunch_col: "F"
+    bl_lunch_col: "I"
+    overtime_col: "R"
+    vab_col: "L"
+    afk_col: "G"
