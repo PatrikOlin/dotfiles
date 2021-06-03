@@ -141,13 +141,14 @@ alias ls="exa"
 alias screen="xrandr --output HDMI-0 --off --output DP-2.1 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2.2 --primary --mode 2560x1440 --pos 1440x592 --rotate normal --output DP-2 --off --output DP-1 --mode 1920x1080 --pos 4000x840 --rotate normal --output DP-0 --off"
 alias config='/usr/bin/git --git-dir=/home/olin/.cfg --work-tree=/home/olin'
 alias reload='exec zsh'
-alias zshrc='nvim ~/.zshrc'
+alias zshrc='vim ~/.zshrc'
 alias fejk=$HOME/scripts/fejk.sh
 alias jp=$HOME/scripts/json-prettify.sh
 alias cheat='cht.sh'
 alias vim='nvim'
 alias '?'='ddgr'
 alias bb='butler-burton'
+alias bla='remmina -c ~/.local/share/remmina/group_rdp_blrds_blrds-blinfo-se.remmina'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -181,6 +182,7 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.m2:$PATH"
+export PATH="$PATH:$HOME/esp/xtensa-esp32-elf/bin"
 typeset -U PATH
 
 

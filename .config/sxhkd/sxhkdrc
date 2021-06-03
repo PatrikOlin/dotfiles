@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-        alacritty
+    alacritty
 
 # rofi program launcher
 super + @space
@@ -12,7 +12,7 @@ super + @space
 
 # rofi script launcher
 super + ctrl + Return
-        ~/.config/rofi/rofi_cmd
+    ~/.config/rofi/rofi_cmd
 
 # rofi window switcher
 alt + Tab
@@ -24,15 +24,23 @@ super + Escape
 
 # sxhkd-help in rofi
 super + z
-        ~/scripts/sxhkd-help
+    ~/scripts/sxhkd-help
 
 # Pavucontrol
 super + v
     pavucontrol
 
+# switch bluetooth headphones to a2dp
+super + shift + v
+    ~/scripts/headphones_profile_switch.sh
+
 # emacsclient
 super + e
 	emacsclient -c
+
+# lockscreen
+super + BackSpace
+    slock
 
 #
 # bspwm hotkeys
