@@ -44,8 +44,8 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; test
-(setq doom-font (font-spec :family "Input" :size 16)
-      doom-variable-pitch-font (font-spec :family "Input"))
+(setq doom-font (font-spec :family "InputMono" :size 16)
+      doom-variable-pitch-font (font-spec :family "InputMono"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -59,31 +59,17 @@
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type 'relative)
-
-(use-package! org-super-agenda
-  :after org-agenda
-  :init
-  (setq org-super-agenda-groups '((:name "Today"
-                                         :time-grid t
-                                         :scheduled today)
-                                  (:name "Due today"
-                                         :deadline today)
-                                  (:name "Important"
-                                         :priority "A")
-                                  (:name "Overdue"
-                                         :deadline past)
-                                  (:name "Due soon"
-                                         :deadline future)
-                                  (:name "Big Outcomes"
-                                         :tag "bo")))
-  :config
-  (org-super-agenda-mode))
-
+(setq display-line-numbers-type 'nil)
 
 ;; Company autocomlpete
 (setq company-idle-delay 0.2
       company-minimum-prefix-length 3)
+
+;; (use-package! tree-sitter
+;;   :config
+;;   (require 'tree-sitter-langs)
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;;Go-lsp-fix
 (setq lsp-gopls-codelens nil)
@@ -94,11 +80,6 @@
 
 ;; (when (memq window-system '(mac ns x))
 ;;   (exec-path-from-shell-initialize))
-
-;; org-jirA
-  (setq jiralib-url "https://blinfo.atlassian.net")
-(setq request-log-level 'debug)
-(setq request-message-level 'debug)
 
 ;; zetteldeft & deft
 
@@ -138,10 +119,10 @@
 ;; keybindings
 (map! :leader
       (:prefix "j"
-        :nv "j" #'evil-jump-backward
-        :nv "b" #'evil-jump-backward
-        :nv "f" #'evil-jump-forward
-        :nv "l" #'+ivy/jump-list
+       :nv "j" #'evil-jump-backward
+       :nv "b" #'evil-jump-backward
+       :nv "f" #'evil-jump-forward
+       :nv "l" #'+ivy/jump-list
        )
       ;; (:prefix "t"
       ;;   :nv "f" #'tide-fix
@@ -151,39 +132,41 @@
       ;;   :nv "b" #'tide-jump-back
       ;;   :nv "e" #'tide-goto-error)
       (:prefix "ö"
-        :nv "f w" #'deadgrep
-        :nv "f f" #'counsel-fzf
-        :nv "r p" #'point-to-register
-        :nv "j p" #'jump-to-register
-        :nv "t" #'projectile-run-vterm)
+       :nv "f w" #'deadgrep
+       :nv "f f" #'counsel-fzf
+       :nv "r p" #'point-to-register
+       :nv "j p" #'jump-to-register
+       :nv "t" #'projectile-run-vterm)
       (:prefix "a"
-        :nv "f" #'avy-goto-char-2
-        :nv "m r" #'avy-move-region
-        :nv "c r" #'avy-copy-region
-        :nv "k r" #'avy-kill-region
-        :nv "m l" #'avy-move-line
-        :nv "c l" #'avy-copy-line
-        :nv "k l" #'avy-kill-whole-line)
+       :nv "f" #'avy-goto-char-2
+       :nv "m r" #'avy-move-region
+       :nv "c r" #'avy-copy-region
+       :nv "k r" #'avy-kill-region
+       :nv "m l" #'avy-move-line
+       :nv "c l" #'avy-copy-line
+       :nv "k l" #'avy-kill-whole-line)
       (:prefix "m"
-        :nv "a" #'evil-multiedit-match-all
-        :nv "i" #'evil-multiedit-insert-state)
+       :nv "a" #'evil-multiedit-match-all
+       :nv "i" #'evil-multiedit-insert-state)
       (:prefix "v"
-        :nv "f" #'vimish-fold-toggle
-        :nv "c f" #'vimish-fold-avy
-        :nv "n f" #'vimish-fold-next-fold
-        :nv "t a" #'vimish-fold-toggle-all
-        :nv "u a" #'vimish-fold-unfold-all
-        :nv "r a" #'vimish-fold-refold-all)
+       :nv "f" #'vimish-fold-toggle
+       :nv "c f" #'vimish-fold-avy
+       :nv "n f" #'vimish-fold-next-fold
+       :nv "t a" #'vimish-fold-toggle-all
+       :nv "u a" #'vimish-fold-unfold-all
+       :nv "r a" #'vimish-fold-refold-all)
       (:prefix "f"
-        :n "o o" #'nil
-        :n "o c" #'nil)
+       :n "o o" #'nil
+       :n "o c" #'nil)
       (:prefix "l"
        :n "p b" #'lsp-ui-peek-jump-backward
        :n "p f" #'lsp-ui-peek-jump-forward
-       :n "d" #'lsp-ui-doc-show
+       :n "d" #'lsp-ui-doc-glance
        :n "p i" #'lsp-ui-peek-find-implementation
        :n "p r" #'lsp-ui-peek-find-references
        )
+      (:prefix "w"
+       :n "SPC" #'winsize-incremental-resize)
       )
 
 
@@ -199,7 +182,7 @@
 
 
 (eval-after-load
-  'typescript-mode
+    'typescript-mode
   '(add-hook 'typescript-mode-hook #'add-node-modules-path))
 
 (use-package wakatime-mode
@@ -214,10 +197,10 @@
 
 ;; (mapc (lambda (f) (set-face-foreground f "dim gray"))
 ;;    '(lsp-ui-sideline-current-symbol lsp-ui-sideline-symbol lsp-ui-sideline-symbol-info))
-(setq lsp-ui-doc nil)
+(setq lsp-ui-doc 'nil)
 (setq lsp-ui-doc-position 'at-point
-      lsp-ui-doc-max-height 150
-      lsp-ui-doc-max-width 100)
+      lsp-ui-doc-max-height 200
+      lsp-ui-doc-max-width 150)
 
 ;;; Angular
 
@@ -240,8 +223,8 @@
 ;; )
 
 ;; (use-package evil-commentary
-  ;; :init
-  ;; (evil-commentary-mode))
+;; :init
+;; (evil-commentary-mode))
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
