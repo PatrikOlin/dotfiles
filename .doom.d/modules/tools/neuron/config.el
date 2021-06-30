@@ -14,6 +14,7 @@
 
 (customize-set-variable 'neuron-tag-specific-title-faces '(("stub" neuron-stub-face)))
 
+
 (defun search-zettelkasten ()
   "Search zettels by content."
   (interactive)

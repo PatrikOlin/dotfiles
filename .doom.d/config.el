@@ -115,8 +115,8 @@
 (defun add-d-to-ediff-mode-map () (define-key ediff-mode-map "c" 'ediff-copy-both-to-C))
 (add-hook 'ediff-keymap-setup-hook 'add-d-to-ediff-mode-map)
 
-
 ;; keybindings
+(global-set-key "\C-x\C-m" 'execute-extended-command)
 (map! :leader
       (:prefix "j"
        :nv "j" #'evil-jump-backward
@@ -129,15 +129,19 @@
        :nv "f f" #'counsel-fzf
        :nv "r p" #'point-to-register
        :nv "j p" #'jump-to-register
-       :nv "t" #'projectile-run-vterm)
+       :nv "t" #'projectile-run-vterm
+       :nv "p" #'persp-switch)
+      (:prefix "k"
+       :nv "l" #'avy-kill-whole-line
+       :nv "r" #'avy-kill-region)
+      (:prefix "y"
+       :nv "l" #'avy-copy-line
+       :nv "r" #'avy-copy-region)
+      (:prefix "m"
+       :nv "l" #'avy-move-line
+       :nv "r" #'avy-move-region)
       (:prefix "a"
-       :nv "f" #'avy-goto-char-2
-       :nv "m r" #'avy-move-region
-       :nv "c r" #'avy-copy-region
-       :nv "k r" #'avy-kill-region
-       :nv "m l" #'avy-move-line
-       :nv "c l" #'avy-copy-line
-       :nv "k l" #'avy-kill-whole-line)
+       :nv "f" #'avy-goto-char-2)
       (:prefix "m"
        :nv "a" #'evil-multiedit-match-all
        :nv "i" #'evil-multiedit-insert-state)
@@ -150,7 +154,10 @@
        :nv "r a" #'vimish-fold-refold-all)
       (:prefix "f"
        :n "o o" #'nil
-       :n "o c" #'nil)
+       :n "o c" #'nil
+       :n "s" (cmd!(find-private-dir "~/scripts/"))
+       :n "c" (cmd!(find-private-dir "~/.config/"))
+       )
       (:prefix "l"
        :n "p b" #'lsp-ui-peek-jump-backward
        :n "p f" #'lsp-ui-peek-jump-forward
@@ -192,7 +199,7 @@
 ;;    '(lsp-ui-sideline-current-symbol lsp-ui-sideline-symbol lsp-ui-sideline-symbol-info))
 (setq lsp-ui-doc 'nil)
 (setq lsp-ui-doc-position 'at-point
-      lsp-ui-doc-max-height 200
+      lsp-ui-doc-max-height 800
       lsp-ui-doc-max-width 150)
 
 ;;; Angular
@@ -256,3 +263,72 @@
 ;; smtpmail-smtp-service 1025)
 
 ;; (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge/cert.pem"))
+
+(defun find-private-dir (dir)
+  "Search for a file in DIR."
+  (interactive)
+  (doom-project-find-file dir))
+
+
+;; anki
+(use-package anki-editor
+  :after org
+  :bind (:map org-mode-map
+              ("<f12>" . anki-editor-cloze-region-auto-incr)
+              ("<f11>" . anki-editor-cloze-region-dont-incr)
+              ("<f10>" . anki-editor-reset-cloze-number)
+              ("<f9>"  . anki-editor-push-tree))
+  :hook (org-capture-after-finalize . anki-editor-reset-cloze-number) ; Reset cloze-number after each capture.
+  :config
+  (setq anki-editor-create-decks t ;; Allow anki-editor to create a new deck if it doesn't exist
+        anki-editor-org-tags-as-anki-tags t)
+
+  (defun anki-editor-cloze-region-auto-incr (&optional arg)
+    "Cloze region without hint and increase card number."
+    (interactive)
+    (anki-editor-cloze-region my-anki-editor-cloze-number "")
+    (setq my-anki-editor-cloze-number (1+ my-anki-editor-cloze-number))
+    (forward-sexp))
+  (defun anki-editor-cloze-region-dont-incr (&optional arg)
+    "Cloze region without hint using the previous card number."
+    (interactive)
+    (anki-editor-cloze-region (1- my-anki-editor-cloze-number) "")
+    (forward-sexp))
+  (defun anki-editor-reset-cloze-number (&optional arg)
+    "Reset cloze number to ARG or 1"
+    (interactive)
+    (setq my-anki-editor-cloze-number (or arg 1)))
+  (defun anki-editor-push-tree ()
+    "Push all notes under a tree."
+    (interactive)
+    (anki-editor-push-notes '(4))
+    (anki-editor-reset-cloze-number))
+  ;; Initialize
+  (anki-editor-reset-cloze-number)
+  )
+
+;; Org-capture templates
+(setq org-my-anki-file "/home/olin/anki/anki.org")
+(add-to-list 'org-capture-templates
+             '("a" "Anki basic"
+               entry
+               (file+headline org-my-anki-file "Dispatch Shelf")
+               "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Basic\n:ANKI_DECK: Mega\n:END:\n** Front\n%?\n** Back\n%x\n"))
+(add-to-list 'org-capture-templates
+             '("A" "Anki cloze"
+               entry
+               (file+headline org-my-anki-file "Dispatch Shelf")
+               "* %<%H:%M>   %^g\n:PROPERTIES:\n:ANKI_NOTE_TYPE: Cloze\n:ANKI_DECK: Mega\n:END:\n** Text\n%x\n** Extra\n"))
+
+;; Allow Emacs to access content from clipboard.
+(setq select-enable-clipboard t
+      select-enable-primary t)
+
+(defun make-orgcapture-frame ()
+    "Create a new frame and run org-capture."
+    (interactive)
+    (make-frame '((name . "org-capture") (window-system . x)))
+    (select-frame-by-name "org-capture")
+    (counsel-org-capture)
+    (delete-other-windows)
+    )

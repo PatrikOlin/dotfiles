@@ -115,10 +115,10 @@ super + {_,shift + }Tab
 #	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+#super + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
 
 # Send node to given desktop and follow
 super + shift + {1-9,0}
@@ -185,3 +185,24 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# bspwm mark register
+#
+
+# mark active window
+super + shift + {u, i, o, p}
+    /home/olin/go/bin/bmr mark -set {u, i, o, p},$(bspc query -N -n)
+
+# focus marked window
+super + {u, i, o, p}
+   /home/olin/go/bin/bmr mark -focus {u, i, o, p}
+
+
+#
+# bspwm scratch pad
+#
+
+# hide scratch pad
+super + x
+    /home/olin/go/bin/bsp

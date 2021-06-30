@@ -23,15 +23,17 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 ;; (package! tide)
-(package! treemacs-icons-dired)
-(package! wakatime-mode)
-(package! prettier-js)
-(package! evil-commentary)
-(package! deadgrep)
 (package! add-node-modules-path)
+(package! anki-editor)
+(package! deadgrep)
 (package! dumb-diff)
+(package! evil-commentary)
 (package! exec-path-from-shell)
 (package! neuron-mode)
+(package! prettier-js)
+(package! treemacs-icons-dired)
+(package! wakatime-mode)
+(package! yaml-mode)
 
 (package! winsize
   :recipe (:host github :repo "PatrikOlin/winsize"
