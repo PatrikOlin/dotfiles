@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+$(jq -r '.scripts | .["'$(jq -r '.scripts|keys[]' \
+			     ~/.config/rofi/menu.json \
+			      | rofi -dmenu)'"] |.script' \
+     ~/.config/rofi/menu.json)

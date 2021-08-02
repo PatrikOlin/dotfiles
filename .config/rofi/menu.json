@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "Audio_mixer": {
+      "name": "Audio mixer",
+      "script": "/home/olin/scripts/rofi_pa_sinks",
+      "tooltip": "Change Pulse Audio active sink"
+    },
+      "Tmux_session": {
+          "name": "Tmux sessions",
+          "script": "/home/olin/.config/rofi/tmux_session.sh",
+          "tooltio": "Select tmux session with rofi"
+      }
+  }
+}

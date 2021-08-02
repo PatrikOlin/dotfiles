@@ -1,0 +1,5 @@
+configuration {
+	modi: "window,run,ssh";
+	font: "Hack Bold 10";
+	theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
+}
