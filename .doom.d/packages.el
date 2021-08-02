@@ -23,20 +23,21 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 ;; (package! tide)
+(package! add-node-modules-path)
+(package! anki-editor)
+(package! deadgrep)
+(package! dumb-diff)
+(package! evil-commentary)
+(package! exec-path-from-shell)
+(package! neuron-mode)
+(package! prettier-js)
 (package! treemacs-icons-dired)
 (package! wakatime-mode)
-(package! prettier-js)
-(package! evil-commentary)
-(package! org-jira)
-(package! org-super-agenda)
-(package! vmd-mode)
-(package! deadgrep)
-(package! add-node-modules-path)
-(package! dumb-diff)
-(package! indium)
-(package! exec-path-from-shell)
-(package! mu4e)
-(package! neuron-mode)
+(package! yaml-mode)
+
+(package! winsize
+  :recipe (:host github :repo "PatrikOlin/winsize"
+           :files ("winsize.el")))
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
