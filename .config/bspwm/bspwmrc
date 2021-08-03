@@ -1,14 +1,19 @@
 #! /bin/sh
 
 sxhkd &
-# $HOME/.config/polybar/launch.sh
 feh --bg-center $(find ~/wallpapers/ -type f | shuf -n 1)
 
 if [[ $(hostname) = "NL580" ]]; then
     bspc monitor DP1-1 -d 1 2 3
     bspc monitor DP1-2 -d 4 5 6
     bspc monitor eDP1 -d 7 8 9
+else
+    bspc monitor HDMI-0 -d 1 2 3
+    bspc monitor DP-2 -d 4 5 6
+    bspc monitor DP-0 -d 7 8 9
+    $HOME/.config/polybar/launch.sh
 fi
+
 
 bspc config border_width         2
 bspc config window_gap          12
