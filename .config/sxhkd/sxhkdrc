@@ -32,7 +32,7 @@ super + v
 
 # switch bluetooth headphones to a2dp
 super + shift + v
-    ~/scripts/headphones_profile_switch.sh
+    ~/scripts/headphones_profile_switch_pipewire
 
 # emacsclient
 super + e
