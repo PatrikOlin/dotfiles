@@ -33,7 +33,6 @@
 (package! prettier-js)
 (package! treemacs-icons-dired)
 (package! wakatime-mode)
-(package! yaml-mode)
 
 (package! winsize
   :recipe (:host github :repo "PatrikOlin/winsize"

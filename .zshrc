@@ -225,6 +225,11 @@ load-nvmrc() {
     nvm use default
   fi
 }
+
+ff() {
+    rg -lu $1 | fzf-tmux --preview 'batgrep '$1' bat --color=always {}';
+}
+
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 if [ -e /home/olin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/olin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

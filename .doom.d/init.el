@@ -23,8 +23,10 @@
         +auto)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy
-        +fuzzy)               ; a search engine for love and life
+       ;(ivy
+        ;+fuzzy)               ; a search engine for love and life
+       (vertico
+        +icons)
 
 
        :ui
