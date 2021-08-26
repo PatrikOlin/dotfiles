@@ -150,6 +150,7 @@ alias vim='nvim'
 alias '?'='ddgr'
 alias bb='butler-burton'
 alias bla='remmina -c ~/.local/share/remmina/group_rdp_blrds_blrds-blinfo-se.remmina'
+alias e='emacsclient -nw'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -225,6 +226,11 @@ load-nvmrc() {
     nvm use default
   fi
 }
+
+ff() {
+    rg -lu $1 | fzf-tmux --preview 'batgrep '$1' bat --color=always {}';
+}
+
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 if [ -e /home/olin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/olin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

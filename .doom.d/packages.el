@@ -30,10 +30,11 @@
 (package! evil-commentary)
 (package! exec-path-from-shell)
 (package! neuron-mode)
+(package! prettier)
 (package! prettier-js)
 (package! treemacs-icons-dired)
 (package! wakatime-mode)
-(package! yaml-mode)
+(package! evil-terminal-cursor-changer)
 
 (package! winsize
   :recipe (:host github :repo "PatrikOlin/winsize"

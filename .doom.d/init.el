@@ -23,8 +23,10 @@
         +auto)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy
-        +fuzzy)               ; a search engine for love and life
+       ;(ivy
+        ;+fuzzy)               ; a search engine for love and life
+       (vertico
+        +icons)
 
 
        :ui
@@ -130,8 +132,8 @@
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       (java
-        +lsp)
+       ;; (java
+       ;;  +lsp)
         ;; +meghanada
         ;; +lsp) ; the poster child for carpal tunnel syndrome
        (javascript        ; all(hope(abandon(ye(who(enter(here))))))
@@ -143,7 +145,8 @@
        ;;:wfactor
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown          ; writing docs for people to ignore
+        +lsp)
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
@@ -174,6 +177,8 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        (web               ; the tubes
+        +lsp)
+       (yaml
         +lsp)
 
        :email

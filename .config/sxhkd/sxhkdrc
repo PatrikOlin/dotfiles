@@ -2,9 +2,13 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
-super + Return
+# terminal emulator without tmux
+super + shift + Return
     alacritty
+
+# terminal emulator with tmux
+super + Return
+    alacritty -e tmux
 
 # rofi program launcher
 super + @space

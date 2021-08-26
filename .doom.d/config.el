@@ -140,8 +140,6 @@
       (:prefix "m"
        :nv "l" #'avy-move-line
        :nv "r" #'avy-move-region)
-      (:prefix "a"
-       :nv "f" #'avy-goto-char-2)
       (:prefix "m"
        :nv "a" #'evil-multiedit-match-all
        :nv "i" #'evil-multiedit-insert-state)
@@ -172,7 +170,7 @@
 
 ;; remap whatever f was to avy
 (map! :nv "f" #'nil)
-(map! :nv "f" #'avy-goto-char-2)
+(map! :nv "f" #'avy-goto-char-timer)
 
 ;; Run prettier in webdev modes
 ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -180,6 +178,11 @@
 ;; (add-hook 'web-mode-hook 'prettier-js-mode)
 ;; (add-hook 'before-save-hook 'prettier-js-mode)
 
+;; evil terminal cursor changer, change cursor shape by evil state in terminal
+(unless (display-graphic-p)
+        (require 'evil-terminal-cursor-changer)
+        (evil-terminal-cursor-changer-activate) ; or (etcc-on)
+     )
 
 (eval-after-load
     'typescript-mode
@@ -192,6 +195,8 @@
 
 (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
 
+(after! doom-modeline
+  (setq doom-modeline-buffer-file-name-style 'truncate-upto-root))
 
 ;; LSP configuration
 
