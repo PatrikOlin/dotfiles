@@ -231,6 +231,11 @@ ff() {
     rg -lu $1 | fzf-tmux --preview 'batgrep '$1' bat --color=always {}';
 }
 
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 if [ -e /home/olin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/olin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
