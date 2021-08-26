@@ -178,6 +178,11 @@
 ;; (add-hook 'web-mode-hook 'prettier-js-mode)
 ;; (add-hook 'before-save-hook 'prettier-js-mode)
 
+;; evil terminal cursor changer, change cursor shape by evil state in terminal
+(unless (display-graphic-p)
+        (require 'evil-terminal-cursor-changer)
+        (evil-terminal-cursor-changer-activate) ; or (etcc-on)
+     )
 
 (eval-after-load
     'typescript-mode
