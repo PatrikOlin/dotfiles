@@ -30,6 +30,10 @@
 ;; (setq auth-source-debug t)
 (setq auth-sources '("~/.authinfo.gpg"))
 
+
+;; set projectile project search path
+(setq projectile-project-search-path '("~/code"))
+
 ;; word-wrap in all text modes
 (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
@@ -44,8 +48,8 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; test
-(setq doom-font (font-spec :family "Input" :size 16)
-      doom-variable-pitch-font (font-spec :family "Input"))
+(setq doom-font (font-spec :family "InputMono" :size 16)
+      doom-variable-pitch-font (font-spec :family "InputMono"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
