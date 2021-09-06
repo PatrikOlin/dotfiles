@@ -351,3 +351,7 @@
     (elixir-mode . lsp)
     :init
     (add-to-list 'exec-path "~/elixir-ls/release"))
+
+
+;; Vertico configuration
+(setq vertico-sort-function 'vertico-sort-history-alpha)

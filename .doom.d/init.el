@@ -95,7 +95,8 @@
        gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
-       lsp
+       (lsp
+        +peek)
        ;; macos             ; MacOS-specific commands
        (magit              ; a git porcelain for Emacs
         +forge)
@@ -159,7 +160,8 @@
         ;;+pomodoro        ; be fruitful with the tomato technique
         ;; +roam
         +present)        ; using org-mode for presentations
-       ;;perl              ; write code no one else can comprehend
+       (perl              ; write code no one else can comprehend
+        +lsp)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
