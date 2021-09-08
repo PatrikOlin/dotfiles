@@ -46,6 +46,14 @@ super + e
 super + BackSpace
     slock
 
+#rofi-file-browser-extended
+super + comma
+    rofi -modi file-browser-extended -show file-browser-extended -file-browser-show-hidden
+
+#rofi-file-browser-extended ebooks dir
+super + period
+    rofi -modi file-browser-extended -show file-browser-extended -file-browser-dir ~/ebooks
+
 #
 # bspwm hotkeys
 #
@@ -104,7 +112,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # move node to different monitor
-super + {comma,period}
+super + shift + {comma,period}
     d={west,east}; bspc node -s $d.local --follow || bspc node -m $d --follow
 
 # send focused desktop to the next or previous monitor
