@@ -54,6 +54,15 @@ super + comma
 super + period
     rofi -modi file-browser-extended -show file-browser-extended -file-browser-dir ~/ebooks
 
+# raise / lower volume
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +1%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+XF86AudioPlay
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 1>/dev/null
 #
 # bspwm hotkeys
 #
