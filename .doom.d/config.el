@@ -66,48 +66,17 @@
 (setq display-line-numbers-type 'nil)
 
 ;; Company autocomlpete
-(setq company-idle-delay 0.2
+(setq company-idle-delay 0.5
       company-minimum-prefix-length 3)
 
-;; (use-package! tree-sitter
-;;   :config
-;;   (require 'tree-sitter-langs)
-;;   (global-tree-sitter-mode)
-;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 ;;Go-lsp-fix
 (setq lsp-gopls-codelens nil)
-;; Mac-horeri
-;; (setq mac-option-modifier nil
-;;       mac-command-modifier 'meta
-;;       select-enable-clipboard t)
-
-;; (when (memq window-system '(mac ns x))
-;;   (exec-path-from-shell-initialize))
-
-;; zetteldeft & deft
-
-;; (use-package! deft
-;;   :ensure t
-;;   :custom
-;;     (deft-extensions '("org" "md" "txt"))
-;;     (deft-directory "~/notes")
-;;     (deft-use-filename-as-title t)
-;; )
-
-;; (use-package! deft
-;;   :ensure t
-;;   :after deft
-;;   :config (zetteldeft-set-classic-keybindings)
-
-;; (defcustom zetteldeft-link-indicator "$"
-;;   "String to indicate zetteldeft links.
-;; String prepended to IDs to easily identify them as links to zetteldeft notes.
-;; This variable should be a string containing only one character."
-;;   :type 'string
-;;   :group 'zetteldeft
-;;   :set 'zetteldeft--id-font-lock-setup)
-;; )
 
 ;; Add both changes in ediff
 (defun ediff-copy-both-to-C ()
@@ -355,3 +324,27 @@
 
 ;; Vertico configuration
 (setq vertico-sort-function 'vertico-sort-history-alpha)
+
+;;; sxhkd-mode
+(define-generic-mode sxhkd-mode
+  '(?#)
+  '("alt" "Escape" "super" "bspc" "ctrl" "space" "shift") nil
+  '("sxhkdrc") nil
+  "Simple mode for sxhkdrc files.")
+
+;;; helper function to activate prettier-js only in web-mode if the file is js or jsx
+(defun enable-minor-mode (my-pair)
+  "Enable minor mode if filename match the regexp.  MY-PAIR is a cons cell (regexp . minor-mode)."
+  (if (buffer-file-name)
+      (if (string-match (car my-pair) buffer-file-name)
+      (funcall (cdr my-pair)))))
+
+
+;;; function to clear console.logs in current buffer
+(defun annihilate-console-logs ()
+       (interactive)
+       (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "console.log(.+);*")
+               (replace-match "" nil nil))
+       ))

@@ -35,6 +35,9 @@
 (package! treemacs-icons-dired)
 (package! wakatime-mode)
 (package! evil-terminal-cursor-changer)
+(package! tree-sitter)
+(package! tree-sitter-langs)
+(package! restclient)
 
 (package! winsize
   :recipe (:host github :repo "PatrikOlin/winsize"
