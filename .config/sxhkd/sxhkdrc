@@ -63,6 +63,10 @@ XF86AudioLowerVolume
 
 XF86AudioPlay
     dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 1>/dev/null
+
+@hyper + F1
+    echo hyper
+
 #
 # bspwm hotkeys
 #

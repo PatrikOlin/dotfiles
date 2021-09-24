@@ -38,6 +38,7 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 (package! restclient)
+(package! speed-type)
 
 (package! winsize
   :recipe (:host github :repo "PatrikOlin/winsize"

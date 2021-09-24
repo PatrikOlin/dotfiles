@@ -151,6 +151,7 @@ alias '?'='ddgr'
 alias bb='butler-burton'
 alias bla='remmina -c ~/.local/share/remmina/group_rdp_blrds_blrds-blinfo-se.remmina'
 alias e='emacsclient -nw'
+alias clip='xclip -selection clipboard'
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
