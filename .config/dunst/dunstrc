@@ -318,7 +318,7 @@
     #icon = /path/to/icon
 
 [play_sound]
-    appname = weechat
+    appname = gomuks
     summary = "*"
     script = "/home/olin/scripts/notify_sound.sh"
 

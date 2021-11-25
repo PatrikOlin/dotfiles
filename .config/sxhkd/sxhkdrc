@@ -4,7 +4,7 @@
 
 # terminal emulator without tmux
 super + shift + Return
-    alacritty
+    alacritty -e /usr/bin/fish
 
 # terminal emulator with tmux
 super + Return
@@ -52,7 +52,7 @@ super + comma
 
 #rofi-file-browser-extended ebooks dir
 super + period
-    rofi -modi file-browser-extended -show file-browser-extended -file-browser-dir ~/ebooks
+      rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # raise / lower volume
 XF86AudioRaiseVolume

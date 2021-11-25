@@ -161,12 +161,17 @@
     'typescript-mode
   '(add-hook 'typescript-mode-hook #'add-node-modules-path))
 
+;; (use-package wakatime-mode
+;;   :init
+;;   (add-hook 'prog-mode-hook 'wakatime-mode)
+;;   :config (global-wakatime-mode))
+;;
 (use-package wakatime-mode
-  :init
-  (add-hook 'prog-mode-hook 'wakatime-mode)
-  :config (global-wakatime-mode))
+  :ensure t)
 
 (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
+;; (custom-set-variables '(wakatime-api-key "a3e06ed3-8aa8-4df2-b2e2-0abe5701f75f"))
+;; (custom-set-variables '(wakatime-api-key "9f64d522-58cf-495a-b4b7-756316f2aba0"))
 
 (after! doom-modeline
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-root))
@@ -321,6 +326,55 @@
     :init
     (add-to-list 'exec-path "~/elixir-ls/release"))
 
+(after! smartparens
+  (defun zz/goto-match-paren (arg)
+    "Go to the matching paren/bracket, otherwise (or if ARG is not
+    nil) insert %.  vi style of % jumping to matching brace."
+    (interactive "p")
+    (if (not (memq last-command '(set-mark
+                                  cua-set-mark
+                                  zz/goto-match-paren
+                                  down-list
+                                  up-list
+                                  end-of-defun
+                                  beginning-of-defun
+                                  backward-sexp
+                                  forward-sexp
+                                  backward-up-list
+                                  forward-paragraph
+                                  backward-paragraph
+                                  end-of-buffer
+                                  beginning-of-buffer
+                                  backward-word
+                                  forward-word
+                                  mwheel-scroll
+                                  backward-word
+                                  forward-word
+                                  mouse-start-secondary
+                                  mouse-yank-secondary
+                                  mouse-secondary-save-then-kill
+                                  move-end-of-line
+                                  move-beginning-of-line
+                                  backward-char
+                                  forward-char
+                                  scroll-up
+                                  scroll-down
+                                  scroll-left
+                                  scroll-right
+                                  mouse-set-point
+                                  next-buffer
+                                  previous-buffer
+                                  previous-line
+                                  next-line
+                                  back-to-indentation
+                                  doom/backward-to-bol-or-indent
+                                  doom/forward-to-last-non-comment-or-eol
+                                  )))
+        (self-insert-command (or arg 1))
+      (cond ((looking-at "\\s\(") (sp-forward-sexp) (backward-char 1))
+            ((looking-at "\\s\)") (forward-char 1) (sp-backward-sexp))
+            (t (self-insert-command (or arg 1))))))
+  (map! "%" 'zz/goto-match-paren))
 
 ;; Vertico configuration
 (setq vertico-sort-function 'vertico-sort-history-alpha)
@@ -348,3 +402,5 @@
         (while (re-search-forward "console.log(.+);*")
                (replace-match "" nil nil))
        ))
+
+(global-wakatime-mode)

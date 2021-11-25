@@ -152,6 +152,7 @@ alias bb='butler-burton'
 alias bla='remmina -c ~/.local/share/remmina/group_rdp_blrds_blrds-blinfo-se.remmina'
 alias e='emacsclient -nw'
 alias clip='xclip -selection clipboard'
+alias getlogs=$HOME/code/bl/scripts/getlogfiles.sh
 
 # Set to show name of virtualenv when operating in virtualenv
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv)
@@ -248,3 +249,4 @@ PERL5LIB="/home/olin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/olin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/olin/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/olin/perl5"; export PERL_MM_OPT;
+
