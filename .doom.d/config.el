@@ -169,9 +169,11 @@
 (use-package wakatime-mode
   :ensure t)
 
-(custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
+;; (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
 ;; (custom-set-variables '(wakatime-api-key "a3e06ed3-8aa8-4df2-b2e2-0abe5701f75f"))
 ;; (custom-set-variables '(wakatime-api-key "9f64d522-58cf-495a-b4b7-756316f2aba0"))
+(custom-set-variables '(wakatime-api-key "ae957cd4-a68f-4070-b472-530345ae6c77"))
+
 
 (after! doom-modeline
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-root))
