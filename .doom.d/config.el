@@ -25,6 +25,7 @@
 ;;
 ;; Make sure to use exec-path-from-shell when run as daemon
 (when (daemonp)
+  (setenv "SHELL" "/usr/bin/zsh")
   (exec-path-from-shell-initialize))
 
 ;; (setq auth-source-debug t)
@@ -63,7 +64,7 @@
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type 'nil)
+(setq display-line-numbers-type "relative")
 
 ;; Company autocomlpete
 (setq company-idle-delay 0.5
@@ -103,7 +104,8 @@
        :nv "r p" #'point-to-register
        :nv "j p" #'jump-to-register
        :nv "t" #'projectile-run-vterm
-       :nv "p" #'persp-switch)
+       :nv "p" #'persp-switch
+       :nv "s" #'sort-fields)
       (:prefix "k"
        :nv "l" #'avy-kill-whole-line
        :nv "r" #'avy-kill-region)
@@ -112,10 +114,11 @@
        :nv "r" #'avy-copy-region)
       (:prefix "m"
        :nv "l" #'avy-move-line
-       :nv "r" #'avy-move-region)
-      (:prefix "m"
+       :nv "r" #'avy-move-region
        :nv "a" #'evil-multiedit-match-all
-       :nv "i" #'evil-multiedit-insert-state)
+       :nv "i" #'evil-multiedit-insert-state
+       :nv "j" #'evil-multiedit-match-symbol-and-next
+       :nv "k" #'evil-multiedit-match-symbol-and-prev)
       (:prefix "v"
        :nv "f" #'vimish-fold-toggle
        :nv "c f" #'vimish-fold-avy
@@ -169,10 +172,11 @@
 (use-package wakatime-mode
   :ensure t)
 
-;; (custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
+(custom-set-variables '(wakatime-api-key "954b96a3-3364-4821-bca2-eccfe5d1fa27"))
 ;; (custom-set-variables '(wakatime-api-key "a3e06ed3-8aa8-4df2-b2e2-0abe5701f75f"))
 ;; (custom-set-variables '(wakatime-api-key "9f64d522-58cf-495a-b4b7-756316f2aba0"))
-(custom-set-variables '(wakatime-api-key "ae957cd4-a68f-4070-b472-530345ae6c77"))
+;; (custom-set-variables '(wakatime-api-key "ae957cd4-a68f-4070-b472-530345ae6c77"))
+(custom-set-variables '(wakatime-cli-path "/home/olin/.wakatime/wakatime-cli-linux-amd64"))
 
 
 (after! doom-modeline
@@ -190,6 +194,14 @@
 ;;; Angular
 
 ;;(add-to-list 'lsp-disabled-clients '(web-mode . angular-ls))
+(setq lsp-clients-angular-language-server-command
+  '("node"
+    "/home/olin/.nvm/versions/node/v15.8.0/lib/node_modules/@angular/language-server"
+    "--ngProbeLocations"
+    "/home/olin/.nvm/versions/node/v15.8.0/lib/node_modules"
+    "--tsProbeLocations"
+    "/home/olin/.nvm/versions/node/v15.8.0/lib/node_modules"
+    "--stdio"))
 
 (add-hook 'neuron-mode-hook 'turn-on-auto-fill)
 
