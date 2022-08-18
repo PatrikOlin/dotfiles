@@ -1,0 +1,5 @@
+#!/bin/bash
+my_mac="D2:DA:A7:3C:1B:0D"
+mac="${my_mac//:/_}"
+
+dbus-send --print-reply=literal --system --dest=org.bluez /org/bluez/hci0/dev_${mac} org.freedesktop.DBus.Properties.Get string:"org.bluez.Battery1" string:"Percentage" | awk '{print $3 "%"}'

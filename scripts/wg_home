@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function connect () {
+    echo "Connecting..."
+    nmcli con down "Wired connection 1"
+    sudo wg-quick up wg0-client
+}
+
+function disconnect () {
+   echo "Disconnecting..."
+   sudo wg-quick down wg0-client
+   nmcli con up "Wired connection 1"
+}
+
+if [[ "$1" == "up" ]]; then
+   connect
+fi
+
+if [[ "$1" == "down" ]]; then
+   disconnect
+fi

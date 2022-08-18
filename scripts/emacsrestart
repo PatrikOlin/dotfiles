@@ -1,0 +1,7 @@
+#!/bin/bash
+
+slock
+emacsclient -e "(persp-kill \"#1\")"
+emacsclient -e "(doom/quicksave-session)"
+systemctl --user restart emacs
+emacsclient -e "(doom/quickload-session)"
